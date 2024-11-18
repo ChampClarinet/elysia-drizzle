@@ -3,11 +3,14 @@ import swagger from "@elysiajs/swagger";
 import { importModule } from "./modules/import";
 import locationsModule from "./modules/locations";
 
-const app = new Elysia({ prefix: "/api" })
+const app = new Elysia()
   .get("/", () => "Hello Elysia")
-  .use(swagger())
-  .group("/import", importModule)
-  .group("/locations", locationsModule)
+  .group("/api", (app) =>
+    app
+      .use(swagger())
+      .group("/import", importModule)
+      .group("/locations", locationsModule)
+  )
   .listen(3000);
 
 console.log(
