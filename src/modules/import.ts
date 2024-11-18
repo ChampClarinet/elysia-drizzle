@@ -4,9 +4,9 @@ import { provinceTable } from "../database/schema/province";
 import { districtTable } from "../database/schema/district";
 import { subdistrictTable } from "../database/schema/subdistrict";
 
-export const importModule = (app: Elysia<"/import">) =>
+export const importModule = (app: Elysia<"/api/import">) =>
   app
-    .get("/", () => "ok, this group works")
+    .get("/", () => "ok, import group works")
     .post(
       "/provinces",
       async ({ body, set }) => {
